@@ -20,7 +20,7 @@ function MyLearning() {
             <h3>My Learnings</h3>
             <Row className='pt-3'>
               {
-                enrolledCourses?.map(item => <Col sm='12' md="3" className='g-3'>
+                enrolledCourses?.length > 0 ? enrolledCourses?.map(item => <Col sm='12' md="3" className='g-3'>
                 <Card className='h-100'>
                   <CardBody>
                     <h4 className='mb-4'>{courses?.find(itm => itm.id === item.courseId)?.title}</h4>
@@ -28,7 +28,7 @@ function MyLearning() {
                     <ProgressBar now={item?.progress} />
                   </CardBody>
                 </Card>
-              </Col>)
+              </Col>) : <div className='d-flex justify-content-center text-danger'>No Course found!</div>
               }
             </Row>
         </div>

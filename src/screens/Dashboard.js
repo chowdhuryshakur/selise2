@@ -1,6 +1,7 @@
+import { file } from 'googleapis/build/src/apis/file';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { Badge, Card, CardBody, Col, Dropdown, Row } from 'react-bootstrap';
+import { Card, CardBody, Col, Dropdown, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
@@ -35,11 +36,22 @@ function Dashboard() {
       setFilteredData(result);
     }, [sort, filter, courses]);
 
+    // const handleSearch = (searchTerm) => {
+    //   setFilteredData(
+    //     courses?.filter((course) =>
+    //       course?.title?.toLowerCase().includes(searchTerm.toLowerCase())
+    //   ))
+    // }
+
     return (
         <div className='p-3' style={{height:'100vh'}}>
             <div className='d-flex justify-content-between'>
               <h3>All Courses</h3>
               <div className='d-flex'>
+                {/* <input
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="Search courses..."
+                /> */}
                 <Dropdown className='me-2'>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Filter By

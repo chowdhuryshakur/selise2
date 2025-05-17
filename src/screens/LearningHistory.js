@@ -9,17 +9,26 @@ function LearningHistory() {
     const navigate = useNavigate()
     const [courses, setCourses] = useState(null)
     const [enrolledCourses, setEnrolledCourses] = useState([])
+    const [totalHour, setTotalHour] = useState([])
 
     useEffect(() => {
-        setCourses(JSON.parse(localStorage.getItem('courses')))
-        setEnrolledCourses(JSON.parse(localStorage.getItem('enrolledCourses')) || [])
+        const rC = JSON.parse(localStorage.getItem('courses'))
+        const rE = JSON.parse(localStorage.getItem('enrolledCourses'))
+        setCourses(rC)
+        setEnrolledCourses(rE || [])
+        let th = 0
+        rE?.forEach(element => {
+          th += rC?.find(item => item?.id === element?.courseId).duration
+        })
+        setTotalHour(th)
+        
     }, [])
 
     return (
         <div className='p-3' style={{height:'100vh'}}>
             <h3>Learnings History</h3>
             <Row className='pt-3'>
-              {/* <h5>Total Course Hour: {courses?.find(itm => itm.id === item.courseId)?.title}</h5> */}
+              <h5>Total Course Hour: {totalHour}</h5>
               <Table striped bordered hover>
                 <thead>
                   <tr>

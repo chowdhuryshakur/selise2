@@ -32,7 +32,10 @@ function CourseDetails() {
             toast.error('Already Enrolled!')
             return 0
         }
-        if (enrolledIds?.includes(course?.prerequisites)) {
+        const hasAllPrerequisites = course?.prerequisites?.length 
+        ? course.prerequisites.every(prereq => enrolledIds?.includes(prereq))
+        : true
+        if (!hasAllPrerequisites) {
             toast.error('Prerequisites are not met!')
             return 0
         }

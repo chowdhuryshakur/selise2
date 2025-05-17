@@ -1,71 +1,122 @@
-# Getting Started with Create React App
+Learning Management System (LMS) - Frontend Application
+Overview
+This is a React-based Learning Management System (LMS) frontend application that allows users to browse, enroll in, and track their progress in various courses. The application uses localStorage for data persistence and comes pre-filled with sample data when first launched.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
 
-## Available Scripts
+Profile Management: View and update user profile
 
-In the project directory, you can run:
+Course Browsing: View available courses with filtering options
 
-### `npm start`
+Course Enrollment: Enroll in available courses
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Progress Tracking: Track completion status of enrolled courses
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Learning History: View completed courses and progress history
 
-### `npm test`
+Search Functionality: Search courses by title, category, or keywords
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Admin Features
+Automatic initialization of sample data
 
-### `npm run build`
+Responsive design for various screen sizes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Technical Details
+Data Structure
+The application uses the following data schema stored in localStorage:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users
+javascript
+{
+  id: string,
+  name: string,
+  email: string,
+  enrolledCourses: array,
+  completedCourses: array
+}
+Courses
+javascript
+{
+  id: string,
+  title: string,
+  description: string,
+  category: string,
+  duration: number, // in minutes
+  isFree: boolean,
+  prerequisites: array, // course IDs
+  content: array // lesson objects
+}
+Initialization
+When the application is launched for the first time (no existing data in localStorage), it automatically:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Creates a default user with pre-filled details
 
-### `npm run eject`
+Initializes five sample courses across various categories:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Web Development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Data Science
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Mobile Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Design
 
-## Learn More
+Business
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Setup Instructions
+Clone the repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+git clone [repository-url]
+cd lms-frontend
+Install dependencies
 
-### Code Splitting
+bash
+npm install
+Run the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+npm start
+Open your browser and navigate to http://localhost:3000
 
-### Analyzing the Bundle Size
+Available Scripts
+npm start: Runs the app in development mode
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm test: Launches the test runner
 
-### Making a Progressive Web App
+npm run build: Builds the app for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm run eject: Ejects from Create React App (not recommended)
 
-### Advanced Configuration
+Dependencies
+React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+React Router
 
-### Deployment
+Bootstrap (for styling)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Font Awesome (for icons)
 
-### `npm run build` fails to minify
+date-fns (for date manipulation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# chatbot-dashboard
+Folder Structure
+/src
+  /components - Reusable UI components
+  /context - Application context providers
+  /data - Initial data setup
+  /pages - Main application pages
+  /services - Data management services
+  /utils - Utility functions
+Testing Credentials
+Use the following default credentials to log in:
+
+Email: user@example.com
+
+Password: password123
+
+Notes
+All data persists in browser's localStorage
+
+Refreshing the page will maintain the application state
+
+Clearing browser storage will reset to initial state with sample data
