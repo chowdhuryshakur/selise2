@@ -1,4 +1,3 @@
-import { computeShrinkWidth } from '@fullcalendar/core/internal';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Badge, Button, Card, CardBody, Col, Dropdown, Row } from 'react-bootstrap';

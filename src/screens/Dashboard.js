@@ -1,4 +1,3 @@
-import { file } from 'googleapis/build/src/apis/file';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, Col, Dropdown, Row } from 'react-bootstrap';
@@ -36,22 +35,39 @@ function Dashboard() {
       setFilteredData(result);
     }, [sort, filter, courses]);
 
-    // const handleSearch = (searchTerm) => {
-    //   setFilteredData(
-    //     courses?.filter((course) =>
-    //       course?.title?.toLowerCase().includes(searchTerm.toLowerCase())
-    //   ))
-    // }
+    const handleFilter = e => {
+      const value = e.target.value
+      let updatedData = []
+
+      if (value.length) {
+        updatedData = courses.filter(item => {
+          const startsWith =
+          item.title?.toLowerCase().startsWith(value.toLowerCase())
+          const includes =
+          item.title?.toLowerCase().includes(value.toLowerCase())
+
+          if (startsWith) {
+          return startsWith
+          } else if (!startsWith && includes) {
+          return includes
+          } else return null
+      })
+      setFilteredData(updatedData)
+      } else if (!value.length) {
+        setFilteredData(courses)
+      }
+  }
 
     return (
         <div className='p-3' style={{height:'100vh'}}>
             <div className='d-flex justify-content-between'>
               <h3>All Courses</h3>
               <div className='d-flex'>
-                {/* <input
-                  onChange={(e) => handleSearch(e.target.value)}
+                <input
+                  onChange={(e) => handleFilter(e)}
                   placeholder="Search courses..."
-                /> */}
+                  className='me-2'
+                />
                 <Dropdown className='me-2'>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Filter By

@@ -28,7 +28,7 @@ function LearningHistory() {
         <div className='p-3' style={{height:'100vh'}}>
             <h3>Learnings History</h3>
             <Row className='pt-3'>
-              <h5>Total Course Hour: {totalHour}</h5>
+              <h5>Total Course Months: {totalHour}</h5>
               <Table striped bordered hover>
                 <thead>
                   <tr>
